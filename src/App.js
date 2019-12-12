@@ -1,5 +1,6 @@
 import React from "react";
 
+import Header from "./components/Header";
 import Brewery from "./components/Brewery";
 
 import "./App.css";
@@ -7,12 +8,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <header>
-        <h1> Boozy Bopper </h1>
-      </header>
-      <section>
-        <h2> An app for the undecided drinker! </h2>
-      </section>
+      <Header />
       <Brewery />
     </div>
   );

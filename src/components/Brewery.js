@@ -7,9 +7,11 @@ import Loader from "react-loader-spinner";
 
 const Brewery = props => {
   return (
-    <>
-      <div>
-        <button onClick={() => props.getBrewery()}>Click Me</button>
+    <div className="container">
+      <div className="brewery">
+        <button onClick={() => props.getBrewery()}>
+          {!props.brewery ? "Click Me" : "Find Another"}
+        </button>
         {!props.brewery && !props.isFetching && (
           <p>
             Click the button above to find out where you are drinking tonight!
@@ -29,7 +31,7 @@ const Brewery = props => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
