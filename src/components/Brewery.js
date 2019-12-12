@@ -1,19 +1,40 @@
 import React from "react";
+
 import { connect } from "react-redux";
 import { getBrewery } from "../actions";
 
+import Loader from "react-loader-spinner";
+
 const Brewery = props => {
   return (
-    <div>
-      <button onClick={() => props.getBrewery()}>
-        Press to pick a random brewery
-      </button>
-      <h2>Brewery Name</h2>
-    </div>
+    <>
+      <div>
+        <button onClick={() => props.getBrewery()}>Click Me</button>
+        {!props.brewery && !props.isFetching && (
+          <p>
+            Click the button above to find out where you are drinking tonight!
+          </p>
+        )}
+        {props.isFetching && (
+          <Loader type="BallTriangle" color="blue" height={80} width={80} />
+        )}
+        {props.brewery && (
+          <div>
+            <h2> {props.brewery.name} </h2>
+            <p> TYPE: {props.brewery.brewery_type} </p>
+            <p>{props.brewery.street}</p>
+            <p>{props.brewery.city}</p>
+            <p>{props.brewery.state}</p>
+            <a href={props.brewery.website_url}> Visit {props.brewery.name} </a>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
 const mapPropsToState = state => {
+  console.log(state);
   return {
     brewery: state.brewery,
     isFetching: state.isFetching,
